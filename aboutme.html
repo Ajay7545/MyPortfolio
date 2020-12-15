@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aboutme</title>
+<link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css” integrity=”sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh” crossorigin=”anonymous”>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>  
+	
+<style>
+    html{
+        scroll-behavior: smooth;
+    }
+a{
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: none;
+}
+.navb{
+    background-color: black;
+    align-items:flex-start;
+    border-radius: 12px;
+
+}
+.navb ul{
+    overflow: auto;
+}
+.navb li {
+    float: left;
+    list-style: none;
+    text-decoration: none;
+    size: 2px;
+    padding: 4px 15px;
+}
+.navb li a{
+    color: white;
+    text-decoration: none;
+}
+.navb input{
+    border-radius: 12px;
+    padding: 2px 12px;
+    background-color: rgb(221, 220, 238);
+}
+.navbar-toggler {
+  border: none;
+  width: 200px;
+  float: left;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.search{
+    float: right;
+    color: white;
+    margin: 2px 10px;
+}
+     body{
+        background-image: url("data:image/jpeg;base64,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");
+        font-family: 'Syne Mono', monospace;
+        background-size: cover;
+        color: rgb(240, 243, 245);
+    }
+    .container
+    {
+        border: 12px solid rgb(3, 3, 56);
+        margin: 20px auto;
+        padding: 20px;
+        border-bottom-right-radius: 50px;
+    }
+    .cont2
+    {
+    border-radius: 800px;
+    height: 200px;
+    }
+
+    
+.fixSocial{
+    transition: fixed;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+}
+.fixSocial a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 0px;
+    background-color: #1e047a;
+    border:1px solid #cbcbcb;
+    box-shadow:2px 2px 12px rgba(212, 220, 221, 0.3);
+
+}
+.fixSocial i{
+    color: #f8f4f4;
+    font-size: 20px;
+}
+.ad1{
+    width: 80%;
+}
+.ad2
+{
+    display:flex;
+    justify-content: center;
+}
+.skills
+{
+    background-image: url("n2.jpg");
+}
+.cert
+{
+
+    background-image: url("kb.jpg");
+    background-size: 1200px;
+    background-repeat: repeat;
+}
+.edu
+{
+    background-repeat:repeat;
+    background-size: 800px;
+ background-image: url("https://img.freepik.com/free-photo/book-with-green-board-background_1150-3837.jpg?size=626&ext=jpg");
+}
+.intr{
+    background-repeat: no-repeat;
+    background-size: 400px;
+ background-image: url("https://wallpaperaccess.com/full/2203449.jpg");
+}
+
+.pro
+{
+ background-image: url("kb.jpg");
+}
+.serv{
+    background-repeat:repeat;
+    background-size:580px;
+background-image: url("https://as2.ftcdn.net/jpg/01/12/84/15/500_F_112841564_R3IrJ7PQP3KVelhwSlevf9z9P9gXFpxW.jpg");
+}
+.btn1{
+    font-family: 'Times New Roman', Times, serif;
+    background: rgb(8, 121, 4);
+    background-size: 50px;
+    padding: 10px;
+    border: 5px;
+    font-size: 30px;       
+    border-bottom-right-radius:20px;
+    
+}
+.btnimg{
+    background-size: cover;
+    background-repeat: no-repeat;
+     background-image: url("data:image/jpeg;base64,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");
+   
+}
+.ml{
+    background-size: 500px;
+    background-image: url("https://i.pinimg.com/originals/27/1e/1f/271e1f8e258b53c96226f17589879094.jpg");
+}
+input{
+    color: blue;
+}
+
+.input1{
+    color: blue;
+}
+.input2{
+    color: rgb(82, 5, 5);
+}
+.clrw
+{
+    color: lavenderblush;
+}
+.divbg
+{
+
+    background-image: url("https://wallpapercave.com/wp/wp2700080.jpg");
+    min-height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.large-div
+{
+    width:300px;
+    height:10000px;
+}
+
+
+.flow-rfrom-right {
+position:fixed;
+bottom:50%;
+left:-100%;
+width:100%;
+height:100px;
+font-size:30px;
+color:white;
+background:#f18500;
+}
+.bg2
+{
+    background-image: url("w2.jpg");
+    /* height: 2000px;
+    width: 1500px;
+    align-items: center; */
+}
+
+</style>
+</head>
+
+<header>
+    <nav class="navb sticky ">
+    <ul>
+    <li><a href="aboutme.html"><img style="border-radius:80px;" src="alogo.jpg" alt="" height="30px"></a> </li>
+    <li><a href="#">Home</a> </li>
+    <!-- <li><a href="https://source.unsplash.com/random">Home</a> </li> -->
+    <li><a href="Ajay's Resume.pdf">Resume</a></li>
+    
+    <li><a href="#1">Projects</a></li>
+    <li><a href="#2">Skills</a></li>
+    <li><a href="#3">Education</a></li>
+    <li><a href="#4">Interest</a></li>
+    <li><a href="#5">ContactUs</a></li>
+    <div class="search"><input type="text" name="search" placeholder="Search Here"></div>
+    </ul>
+    </nav>
+ </header>
+
+<body>
+    <div class="bg2">
+    <br><br><br>
+    <img src="aj.jpg" class="cont2 img2" height="500px"  alt="">
+
+    <h1> &nbsp; AJAY KUMAR</h1>
+    <!-- <div class="large-div"></div>
+<div class="flow-rfrom-right"></div> -->
+ 
+    <marquee direction="left" class="input1" height="20" width="200" >Software Engineer & Developer
+    </marquee>   
+    <h4 style="color: blue;">Objective: To make positive contribution as part of your dynamic and well reputed organization in a position where My technical skill and decision making will be appreciated and enhanced.</h4>
+ 
+<div class="ad2">
+    <div class="ad1">
+        <div id="myslider" class="carousel slide" data-ride="carousel"  height="500" >
+        
+          <ol class="carousel-indicators">
+            <li data-target="#myslider" data-slide-to="0" class="active"></li>
+            <li data-target="#myslider" data-slide-to="1"></li>
+            <li data-target="#myslider" data-slide-to="2"></li>
+          </ol>
+      
+         
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="av2.jpg" class="img-responsive"  style="width:100%;height:500px">
+            </div>
+      
+            <div class="item ">
+              <img src="av3.jpg" class="img-responsive" style="width:100%;height:500px">
+            </div>
+          
+            <div class="item">
+              <img src="av4.jpg"  class="img-responsive" style="width:100%;height:500px">
+            </div>
+          </div>
+      
+
+          <a class=" carousel-control" href="#myslider" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+
+          <a class="right carousel-control" href="#myslider" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">next</span>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+</div>
+    <div class="divbg">
+    </div>
+
+    <div class="fixSocial" style="position:fixed">
+        <a href="https://www.facebook.com/ajay7545"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/ajaykumar7545"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/ajaykumar.7/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/ajay7545"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <!-- <div id=img2>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSjccAoM2F9jTPdJe0Pfcfbck7_a9J2sjHJJQ&usqp=CAU" alt="errorloading" height="40px" width="100px" >
+    </div> -->
+  
+    <div class="container ml clrw">
+
+        <h2 style="color: rgb(210, 205, 255);">My Links</h2>
+<h3>    <a href="https://www.linkedin.com/in/ajay7545" target="_blank" class="clrw">  Linkedin Profile</a><br>
+        <a href="https://github/Ajay7545.com"target="_blank" class="clrw">Github Profile</a><br>
+        <a href="https://ajaykumar7545.com"target="_blank" class="clrw">Skype Id</a><br>
+        <a href="https://www.facebook.com/ajay7545" target="_blank" class="clrw">Facebook Profile</a>  
+    </h3>
+    </div>
+    
+
+    
+        </div>
+    <br>
+  
+    <!-- <div class="divbg">
+    </div> -->
+
+    <div id="1" class="container pro">
+        <h3> &nbsp; PROJECTS</h3> 
+    <ul >
+    <li>EEG Classification (Brain-Computer Interface)
+         EEG Classification of Signals coming from Brain to Detect the hand movements and Deception Detection (familiar and unfamiliar faces).
+         github.com/Ajay7545/EEGClassification
+        </li>
+    <li>Family Locator App
+         Provides attractive user interface.
+         Activities of Login/ Signup / Map and Firebase (for database).
+         github.com/ajay7545
+        </li>
+    <li>Learning Programming Hub
+         Developed using MY Eclipse IDE with SQL database.
+         Login/Sign/Validation/Programming Languages Notes.
+         https://github.com/ajay7545
+        </li>
+    <li>Hotel Management    
+         Services Management/ File Handling
+           github.com/Ajay7545/hotelmanagement
+        </li>    
+    </ul>
+</div>
+
+<!-- <div class="divbg">
+</div> -->
+
+        <div class="container">         
+            <ul> <h3>INTERNSHIP</h3> </ul>
+               
+            &nbsp; Machine Learning                     -IIT Patna  
+                               May 2019 – July 2019
+                               <br>
+             EEG Classification of Signals coming from Brain 
+            To Detect the hand movements ( Left and Right 
+            hand movements). 
+            <br>
+             Build a model for best results.
+            
+            </p>
+        </div>
+
+        <!-- <div class="divbg">
+        </div> -->
+
+
+        <div class="container cert">         
+            <ul>  <h3> CERTIFICATION</h3> 
+                <li>PYTHON TRAINING 2018-2019 </li>
+                <li>ANDROID TRAINING 2018-2019</li>
+                <li>CORE JAVA TRAINING 2017-2018</li>
+            </ul>
+        </div>
+
+        <div class="divbg">
+        </div>
+     
+        <div id="2" class="container skills"> 
+            <ul>   <h3>SKILLS</h3>
+            <li>  C/C++ Language  </li> 
+                <li>  Java/OOPs Concept  </li>
+                <li>   Python/ Data Science(Numpy/Pandas) </li> 
+                <li>   Machine Learning </li> 
+                <li>   App Developer </li> 
+                <li>   Software Engineering </li>
+                <li>   Latex/Window/Linux/Microsoft </li> 
+            </ul>
+        </div>
+     
+
+
+        <div id="3" class="container edu"> 
+            <p>
+                <ul class="input2">
+                    <h3>EDUCATION</h3>
+                    <li>
+                        Computer Science Engineering, B.Tech     <br>    
+                        Jaypee Institute of Information Technology,  <br>       
+                        Noida, Uttar Pradesh <br>
+                        2016 - 2020                                            
+                        
+                    </li>
+                
+                <li>
+                    Science, Intermediate (CBSE) <br>
+                    New Public Inter College South City, <br>
+                    Lucknow, Uttar Pradesh  
+                </li>
+
+                <li>
+
+                    High School (CBSE) <br>
+                    Army Public School, Nehru Road <br>
+                    Lucknow, Uttar Pradesh
+                                                                       
+                    
+                </li>
+
+                </ul>
+                
+                                               		 
+                
+            </p>
+        </div>
+
+
+
+        <div id="4"  class="container intr">         
+            <ul> 
+                <h3>INTERESTS</h3> 
+                <li>Travelling</li>
+                <li>Socialiser</li>
+                <li>Chess</li>
+                <li>Work Management</li>
+            </ul>
+        </div>
+        
+    
+        <div class="divbg">
+            
+        </div>
+
+<div id="5" class="container serv">
+    <h3 class="input1">Fill details for any Query</h3>
+    <form action="">
+        <div class="form-group"> 
+            <input type="text" name="" placeholder="Enter you name">
+        </div>
+        <div class="form-group"> 
+            <input type="number" name="" placeholder="Enter you Mobile Number">
+        </div>
+        <div class="form-group"> 
+            <input type="email" name="" placeholder="Enter you E-mail">
+        </div>
+        <div class="form-group"> 
+            <input type="text" name="" placeholder="Enter you Query">
+        </div>
+        <button type="submit" class="btn1 btnimg">Submit</button>
+        <button type="reset" class="btn1 btnimg">Reset</button>
+
+    </form>    
+</div>
+
+<FOOter>
+    <div style="text-align: end;"><a href="Ajay's Resume.pdf">  Download CV </a> </div>
+
+</FOOter>
+</body>
+</html>
